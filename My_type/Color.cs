@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace MyType
 {
@@ -35,6 +29,28 @@ namespace MyType
             var newRed = left.red - right.red;
             var newGreen = left.green - right.green;
             var newBlue = left.blue - right.blue;
+
+            return new RGB(newRed, newGreen, newBlue);
+        }
+
+        public static RGB operator +(RGB left, HSV right)
+        {
+            var rightRGB = right.ToRGB();
+
+            var newRed = left.red + rightRGB.red;
+            var newGreen = left.green + rightRGB.green;
+            var newBlue = left.blue + rightRGB.blue;
+
+            return new RGB(newRed, newGreen, newBlue);
+        }
+
+        public static RGB operator -(RGB left, HSV right)
+        {
+            var rightRGB = right.ToRGB();
+
+            var newRed = left.red - rightRGB.red;
+            var newGreen = left.green - rightRGB.green;
+            var newBlue = left.blue - rightRGB.blue;
 
             return new RGB(newRed, newGreen, newBlue);
         }
@@ -94,7 +110,7 @@ namespace MyType
              * https://learn.microsoft.com/ru-ru/dotnet/csharp/language-reference/operators/type-testing-and-cast#the-as-operator
              */
 
-            var other = obj as RGB;
+            var other = (RGB)obj;
             var equalsFlag = true;
             if (this.red != other.red)
                 equalsFlag = false;
@@ -128,6 +144,7 @@ namespace MyType
 
             return new HSV(newHue, newSaturation, newValue);
         }
+
         public static HSV operator -(HSV left, HSV right)
         {
             var newHue = left.hue - right.hue;
@@ -137,42 +154,55 @@ namespace MyType
             return new HSV(newHue, newSaturation, newValue);
         }
 
-        //TODO доделать HSV - RGB
+        public static HSV operator +(HSV left, RGB right)
+        {
+            var rightHSV = right.ToHSV();
 
-        //public RGB ToRGB()
-        //{
-        //    double Hi = (this.hue / 60) % 6;
-        //    double s = Math.Clamp(this.saturation, 0, 1);
-        //    double v = Math.Clamp(this.value, 0, 1);
+            var newHue = left.hue + rightHSV.hue;
+            var newSat = left.saturation + rightHSV.saturation;
+            var newValue = left.value + rightHSV.value;
 
-        //    double red = 0, g = 0, b = 0;
+            return new HSV(newHue, newSat, newValue);
+        }
 
-        //    if (s == 0)
-        //    {
-        //        r = g = b = v;
-        //    }
-        //    else
-        //    {
-        //        int hi = (int)Math.Floor(h / 60) % 6;
-        //        double f = (h / 60) - Math.Floor(h / 60);
+        public static HSV operator -(HSV left, RGB right)
+        {
+            var rightHSV = right.ToHSV();
 
-        //        double p = v * (1 - s);
-        //        double q = v * (1 - f * s);
-        //        double t = v * (1 - (1 - f) * s);
+            var newHue = left.hue - rightHSV.hue;
+            var newSat = left.saturation - rightHSV.saturation;
+            var newValue = left.value - rightHSV.value;
 
-        //        switch (hi)
-        //        {
-        //            case 0: r = v; g = t; b = p; break;
-        //            case 1: r = q; g = v; b = p; break;
-        //            case 2: r = p; g = v; b = t; break;
-        //            case 3: r = p; g = q; b = v; break;
-        //            case 4: r = t; g = p; b = v; break;
-        //            case 5: r = v; g = p; b = q; break;
-        //        }
-        //    }
+            return new HSV(newHue, newSat, newValue);
+        }
 
-        //    return new RGB(r, g, b);
-        //}
+        public RGB ToRGB()
+        {
+            double Hi = (int)(this.hue / 60) % 6;
+
+            double Vmin = (100 - this.saturation) * this.value / 100;
+            double a = (this.value - Vmin) * (this.hue % 60) / 60;
+            double Vinc = Vmin + a;
+            double Vdec = this.value - a;
+
+            var redNorm = 0d;
+            var greenNorm = 0d;
+            var blueNorm = 0d;
+            switch(Hi)
+            {
+                case 0: redNorm = this.value; greenNorm = Vinc; blueNorm = Vmin; break;
+                case 1: redNorm = Vdec; greenNorm = this.value; blueNorm = Vmin; break;
+                case 2: redNorm = Vmin; greenNorm = this.value; blueNorm = Vinc; break;
+                case 3: redNorm = Vmin; greenNorm = Vdec; blueNorm = this.value; break;
+                case 4: redNorm = Vinc; greenNorm = Vmin; blueNorm = this.value; break;
+                case 5: redNorm = this.value; greenNorm = Vmin; blueNorm = Vdec; break;
+            }
+
+            int red = (int)Math.Round(redNorm * 255 / 100);
+            int green = (int)Math.Round(greenNorm * 255 / 100);
+            int blue = (int)Math.Round(blueNorm * 255 / 100);
+            return new RGB(red, green, blue);
+        }
 
         public override string ToString()
         {

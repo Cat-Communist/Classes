@@ -8,5 +8,21 @@ namespace My_type
         {
             InitializeComponent();
         }
+
+        // TODO: доделать Calculate()
+        private void Calculate()
+        {
+            try
+            {
+                Object result;
+                if (cmbFirstType.Text == "HSV")
+                {
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
     }
 }

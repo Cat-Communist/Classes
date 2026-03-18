@@ -28,142 +28,142 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
+            firstRH = new TextBox();
+            firstGS = new TextBox();
+            firstBV = new TextBox();
             comboBox1 = new ComboBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            textBox6 = new TextBox();
-            comboBox2 = new ComboBox();
-            comboBox3 = new ComboBox();
-            textBox7 = new TextBox();
-            textBox8 = new TextBox();
-            textBox9 = new TextBox();
-            comboBox4 = new ComboBox();
+            secondBV = new TextBox();
+            secondGS = new TextBox();
+            secondR = new TextBox();
+            cmbFirstType = new ComboBox();
+            cmbSecondType = new ComboBox();
+            resultBV = new TextBox();
+            resultGS = new TextBox();
+            resultRH = new TextBox();
+            cmbResultType = new ComboBox();
             SuspendLayout();
             // 
-            // textBox1
+            // firstRH
             // 
-            textBox1.Location = new Point(79, 46);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(31, 27);
-            textBox1.TabIndex = 0;
+            firstRH.Location = new Point(80, 36);
+            firstRH.Name = "firstRH";
+            firstRH.Size = new Size(31, 27);
+            firstRH.TabIndex = 0;
             // 
-            // textBox2
+            // firstGS
             // 
-            textBox2.Location = new Point(116, 46);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(31, 27);
-            textBox2.TabIndex = 1;
+            firstGS.Location = new Point(117, 36);
+            firstGS.Name = "firstGS";
+            firstGS.Size = new Size(31, 27);
+            firstGS.TabIndex = 1;
             // 
-            // textBox3
+            // firstBV
             // 
-            textBox3.Location = new Point(153, 46);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(31, 27);
-            textBox3.TabIndex = 2;
+            firstBV.Location = new Point(154, 36);
+            firstBV.Name = "firstBV";
+            firstBV.Size = new Size(31, 27);
+            firstBV.TabIndex = 2;
             // 
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "+", "-" });
-            comboBox1.Location = new Point(12, 65);
+            comboBox1.Location = new Point(13, 55);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(52, 28);
             comboBox1.TabIndex = 6;
             comboBox1.Text = "+";
             // 
-            // textBox4
+            // secondBV
             // 
-            textBox4.Location = new Point(153, 83);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(31, 27);
-            textBox4.TabIndex = 9;
+            secondBV.Location = new Point(154, 73);
+            secondBV.Name = "secondBV";
+            secondBV.Size = new Size(31, 27);
+            secondBV.TabIndex = 9;
             // 
-            // textBox5
+            // secondGS
             // 
-            textBox5.Location = new Point(116, 83);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(31, 27);
-            textBox5.TabIndex = 8;
+            secondGS.Location = new Point(117, 73);
+            secondGS.Name = "secondGS";
+            secondGS.Size = new Size(31, 27);
+            secondGS.TabIndex = 8;
             // 
-            // textBox6
+            // secondR
             // 
-            textBox6.Location = new Point(79, 83);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(31, 27);
-            textBox6.TabIndex = 7;
+            secondR.Location = new Point(80, 73);
+            secondR.Name = "secondR";
+            secondR.Size = new Size(31, 27);
+            secondR.TabIndex = 7;
             // 
-            // comboBox2
+            // cmbFirstType
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "HSV", "RGB" });
-            comboBox2.Location = new Point(201, 48);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(56, 28);
-            comboBox2.TabIndex = 10;
-            comboBox2.Text = "HSV";
+            cmbFirstType.FormattingEnabled = true;
+            cmbFirstType.Items.AddRange(new object[] { "HSV", "RGB" });
+            cmbFirstType.Location = new Point(202, 38);
+            cmbFirstType.Name = "cmbFirstType";
+            cmbFirstType.Size = new Size(56, 28);
+            cmbFirstType.TabIndex = 10;
+            cmbFirstType.Text = "HSV";
             // 
-            // comboBox3
+            // cmbSecondType
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Items.AddRange(new object[] { "HSV", "RGB" });
-            comboBox3.Location = new Point(201, 83);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(56, 28);
-            comboBox3.TabIndex = 11;
-            comboBox3.Text = "HSV";
+            cmbSecondType.FormattingEnabled = true;
+            cmbSecondType.Items.AddRange(new object[] { "HSV", "RGB" });
+            cmbSecondType.Location = new Point(202, 73);
+            cmbSecondType.Name = "cmbSecondType";
+            cmbSecondType.Size = new Size(56, 28);
+            cmbSecondType.TabIndex = 11;
+            cmbSecondType.Text = "HSV";
             // 
-            // textBox7
+            // resultBV
             // 
-            textBox7.Location = new Point(153, 116);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(31, 27);
-            textBox7.TabIndex = 14;
+            resultBV.Location = new Point(154, 108);
+            resultBV.Name = "resultBV";
+            resultBV.Size = new Size(31, 27);
+            resultBV.TabIndex = 14;
             // 
-            // textBox8
+            // resultGS
             // 
-            textBox8.Location = new Point(116, 116);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(31, 27);
-            textBox8.TabIndex = 13;
+            resultGS.Location = new Point(117, 108);
+            resultGS.Name = "resultGS";
+            resultGS.Size = new Size(31, 27);
+            resultGS.TabIndex = 13;
             // 
-            // textBox9
+            // resultRH
             // 
-            textBox9.Location = new Point(79, 116);
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(31, 27);
-            textBox9.TabIndex = 12;
+            resultRH.Location = new Point(80, 108);
+            resultRH.Name = "resultRH";
+            resultRH.Size = new Size(31, 27);
+            resultRH.TabIndex = 12;
             // 
-            // comboBox4
+            // cmbResultType
             // 
-            comboBox4.FormattingEnabled = true;
-            comboBox4.Items.AddRange(new object[] { "HSV", "RGB" });
-            comboBox4.Location = new Point(201, 115);
-            comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(56, 28);
-            comboBox4.TabIndex = 15;
-            comboBox4.Text = "HSV";
+            cmbResultType.FormattingEnabled = true;
+            cmbResultType.Items.AddRange(new object[] { "HSV", "RGB" });
+            cmbResultType.Location = new Point(202, 107);
+            cmbResultType.Name = "cmbResultType";
+            cmbResultType.Size = new Size(56, 28);
+            cmbResultType.TabIndex = 15;
+            cmbResultType.Text = "HSV";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(422, 237);
-            Controls.Add(comboBox4);
-            Controls.Add(textBox7);
-            Controls.Add(textBox8);
-            Controls.Add(textBox9);
-            Controls.Add(comboBox3);
-            Controls.Add(comboBox2);
-            Controls.Add(textBox4);
-            Controls.Add(textBox5);
-            Controls.Add(textBox6);
+            ClientSize = new Size(422, 164);
+            Controls.Add(cmbResultType);
+            Controls.Add(resultBV);
+            Controls.Add(resultGS);
+            Controls.Add(resultRH);
+            Controls.Add(cmbSecondType);
+            Controls.Add(cmbFirstType);
+            Controls.Add(secondBV);
+            Controls.Add(secondGS);
+            Controls.Add(secondR);
             Controls.Add(comboBox1);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(firstBV);
+            Controls.Add(firstGS);
+            Controls.Add(firstRH);
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);
@@ -172,18 +172,18 @@
 
         #endregion
         private Button button1;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
+        private TextBox firstRH;
+        private TextBox firstGS;
+        private TextBox firstBV;
         private ComboBox comboBox1;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private TextBox textBox6;
-        private ComboBox comboBox2;
-        private ComboBox comboBox3;
-        private TextBox textBox7;
-        private TextBox textBox8;
-        private TextBox textBox9;
-        private ComboBox comboBox4;
+        private TextBox secondBV;
+        private TextBox secondGS;
+        private TextBox secondR;
+        private ComboBox cmbFirstType;
+        private ComboBox cmbSecondType;
+        private TextBox resultBV;
+        private TextBox resultGS;
+        private TextBox resultRH;
+        private ComboBox cmbResultType;
     }
 }
