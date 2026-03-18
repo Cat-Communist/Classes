@@ -49,5 +49,14 @@ namespace MyType_Testing
 
             Assert.AreEqual(new HSV(-15, 10, 45), result);
         }
+
+        [Test]
+        public void ToHSV()
+        {
+            var rgb = new RGB(123, 231, 132);
+            var result = rgb.ToHSV();
+
+            Assert.AreEqual(new HSV(125, 47, 91), result);
+        }
     }
 }

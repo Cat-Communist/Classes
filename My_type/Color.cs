@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MyType
 {
@@ -38,14 +39,46 @@ namespace MyType
             return new RGB(newRed, newGreen, newBlue);
         }
 
-        //TODO
+        public HSV ToHSV()
+        {
+            double redNorm = this.red / 255.0;
+            double greenNorm = this.green / 255.0;
+            double blueNorm = this.blue / 255.0;
 
-        //public HSV ToHSV()
-        //{
-        //    var hue = this.
+            double max = Math.Max(redNorm, Math.Max(greenNorm, blueNorm));
+            double min = Math.Min(redNorm, Math.Min(greenNorm, blueNorm));
+            double delta = max - min;
 
-        //    return hsvObject;
-        //}
+            int hue = 0;
+
+            if (delta != 0)
+            {
+                if (max == redNorm)
+                {
+                    hue = (int)Math.Round(60 * ((greenNorm - blueNorm) / delta));
+                    if (greenNorm < blueNorm)
+                        hue += 360;
+                }
+                else if (max == greenNorm)
+                {
+                    hue = (int)Math.Round(60 * ((blueNorm - redNorm) / delta) + 120);
+                }
+                else if (max == blueNorm)
+                {
+                    hue = (int)Math.Round(60 * ((redNorm - greenNorm) / delta) + 240);
+                }
+            }
+
+            int saturation = (max == 0) ? 0 : (int)Math.Round((delta / max) * 100); // delta = max - min, de
+            int value = (int)Math.Round(max * 100);
+
+            return new HSV(hue, saturation, value);
+        }
+
+        public override string ToString()
+        {
+            return $"R - {red}, G - {green}, B - {blue}";
+        }
 
         public override bool Equals(object? obj)
         {
@@ -72,8 +105,6 @@ namespace MyType
 
             return equalsFlag;
         }
-
-
     }
 
     public class HSV
@@ -104,6 +135,48 @@ namespace MyType
             var newValue = left.value - right.value;
 
             return new HSV(newHue, newSaturation, newValue);
+        }
+
+        //TODO доделать HSV - RGB
+
+        //public RGB ToRGB()
+        //{
+        //    double Hi = (this.hue / 60) % 6;
+        //    double s = Math.Clamp(this.saturation, 0, 1);
+        //    double v = Math.Clamp(this.value, 0, 1);
+
+        //    double red = 0, g = 0, b = 0;
+
+        //    if (s == 0)
+        //    {
+        //        r = g = b = v;
+        //    }
+        //    else
+        //    {
+        //        int hi = (int)Math.Floor(h / 60) % 6;
+        //        double f = (h / 60) - Math.Floor(h / 60);
+
+        //        double p = v * (1 - s);
+        //        double q = v * (1 - f * s);
+        //        double t = v * (1 - (1 - f) * s);
+
+        //        switch (hi)
+        //        {
+        //            case 0: r = v; g = t; b = p; break;
+        //            case 1: r = q; g = v; b = p; break;
+        //            case 2: r = p; g = v; b = t; break;
+        //            case 3: r = p; g = q; b = v; break;
+        //            case 4: r = t; g = p; b = v; break;
+        //            case 5: r = v; g = p; b = q; break;
+        //        }
+        //    }
+
+        //    return new RGB(r, g, b);
+        //}
+
+        public override string ToString()
+        {
+            return $"H - {hue}, S - {saturation}%, V - {value}%";
         }
 
         public override bool Equals(object? obj)
