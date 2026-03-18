@@ -1,3 +1,5 @@
+using MyType;
+
 namespace My_type
 {
     public partial class Form1 : Form
@@ -5,7 +7,6 @@ namespace My_type
         public Form1()
         {
             InitializeComponent();
-
         }
     }
 }
