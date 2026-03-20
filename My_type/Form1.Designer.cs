@@ -28,72 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            firstRH = new TextBox();
-            firstGS = new TextBox();
-            firstBV = new TextBox();
-            comboBox1 = new ComboBox();
-            secondBV = new TextBox();
-            secondGS = new TextBox();
-            secondR = new TextBox();
+            cmbOperation = new ComboBox();
             cmbFirstType = new ComboBox();
             cmbSecondType = new ComboBox();
-            resultBV = new TextBox();
-            resultGS = new TextBox();
-            resultRH = new TextBox();
             cmbResultType = new ComboBox();
+            txtSecondRH = new TextBox();
+            txtSecondGS = new TextBox();
+            txtSecondBV = new TextBox();
+            txtResultRH = new TextBox();
+            txtResultGS = new TextBox();
+            txtResultBV = new TextBox();
+            txtFirstBV = new TextBox();
+            txtFirstGS = new TextBox();
+            txtFirstRH = new TextBox();
+            firstPanel = new Panel();
+            secondPanel = new Panel();
+            resultPanel = new Panel();
             SuspendLayout();
             // 
-            // firstRH
+            // cmbOperation
             // 
-            firstRH.Location = new Point(80, 36);
-            firstRH.Name = "firstRH";
-            firstRH.Size = new Size(31, 27);
-            firstRH.TabIndex = 0;
-            // 
-            // firstGS
-            // 
-            firstGS.Location = new Point(117, 36);
-            firstGS.Name = "firstGS";
-            firstGS.Size = new Size(31, 27);
-            firstGS.TabIndex = 1;
-            // 
-            // firstBV
-            // 
-            firstBV.Location = new Point(154, 36);
-            firstBV.Name = "firstBV";
-            firstBV.Size = new Size(31, 27);
-            firstBV.TabIndex = 2;
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "+", "-" });
-            comboBox1.Location = new Point(13, 55);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(52, 28);
-            comboBox1.TabIndex = 6;
-            comboBox1.Text = "+";
-            // 
-            // secondBV
-            // 
-            secondBV.Location = new Point(154, 73);
-            secondBV.Name = "secondBV";
-            secondBV.Size = new Size(31, 27);
-            secondBV.TabIndex = 9;
-            // 
-            // secondGS
-            // 
-            secondGS.Location = new Point(117, 73);
-            secondGS.Name = "secondGS";
-            secondGS.Size = new Size(31, 27);
-            secondGS.TabIndex = 8;
-            // 
-            // secondR
-            // 
-            secondR.Location = new Point(80, 73);
-            secondR.Name = "secondR";
-            secondR.Size = new Size(31, 27);
-            secondR.TabIndex = 7;
+            cmbOperation.FormattingEnabled = true;
+            cmbOperation.Items.AddRange(new object[] { "+", "-" });
+            cmbOperation.Location = new Point(13, 55);
+            cmbOperation.Name = "cmbOperation";
+            cmbOperation.Size = new Size(52, 28);
+            cmbOperation.TabIndex = 6;
+            cmbOperation.Text = "+";
+            cmbOperation.SelectedIndexChanged += onValueChanged;
             // 
             // cmbFirstType
             // 
@@ -104,6 +66,7 @@
             cmbFirstType.Size = new Size(56, 28);
             cmbFirstType.TabIndex = 10;
             cmbFirstType.Text = "HSV";
+            cmbFirstType.SelectedIndexChanged += onValueChanged;
             // 
             // cmbSecondType
             // 
@@ -114,27 +77,7 @@
             cmbSecondType.Size = new Size(56, 28);
             cmbSecondType.TabIndex = 11;
             cmbSecondType.Text = "HSV";
-            // 
-            // resultBV
-            // 
-            resultBV.Location = new Point(154, 108);
-            resultBV.Name = "resultBV";
-            resultBV.Size = new Size(31, 27);
-            resultBV.TabIndex = 14;
-            // 
-            // resultGS
-            // 
-            resultGS.Location = new Point(117, 108);
-            resultGS.Name = "resultGS";
-            resultGS.Size = new Size(31, 27);
-            resultGS.TabIndex = 13;
-            // 
-            // resultRH
-            // 
-            resultRH.Location = new Point(80, 108);
-            resultRH.Name = "resultRH";
-            resultRH.Size = new Size(31, 27);
-            resultRH.TabIndex = 12;
+            cmbSecondType.SelectedIndexChanged += onValueChanged;
             // 
             // cmbResultType
             // 
@@ -145,25 +88,119 @@
             cmbResultType.Size = new Size(56, 28);
             cmbResultType.TabIndex = 15;
             cmbResultType.Text = "HSV";
+            cmbResultType.SelectedIndexChanged += onValueChanged;
+            // 
+            // txtSecondRH
+            // 
+            txtSecondRH.Location = new Point(85, 73);
+            txtSecondRH.Name = "txtSecondRH";
+            txtSecondRH.Size = new Size(31, 27);
+            txtSecondRH.TabIndex = 0;
+            txtSecondRH.TextChanged += onValueChanged;
+            // 
+            // txtSecondGS
+            // 
+            txtSecondGS.Location = new Point(122, 73);
+            txtSecondGS.Name = "txtSecondGS";
+            txtSecondGS.Size = new Size(31, 27);
+            txtSecondGS.TabIndex = 1;
+            txtSecondGS.TextChanged += onValueChanged;
+            // 
+            // txtSecondBV
+            // 
+            txtSecondBV.Location = new Point(159, 73);
+            txtSecondBV.Name = "txtSecondBV";
+            txtSecondBV.Size = new Size(31, 27);
+            txtSecondBV.TabIndex = 2;
+            txtSecondBV.TextChanged += onValueChanged;
+            // 
+            // txtResultRH
+            // 
+            txtResultRH.Location = new Point(85, 108);
+            txtResultRH.Name = "txtResultRH";
+            txtResultRH.Size = new Size(31, 27);
+            txtResultRH.TabIndex = 0;
+            // 
+            // txtResultGS
+            // 
+            txtResultGS.Location = new Point(122, 108);
+            txtResultGS.Name = "txtResultGS";
+            txtResultGS.Size = new Size(31, 27);
+            txtResultGS.TabIndex = 1;
+            // 
+            // txtResultBV
+            // 
+            txtResultBV.Location = new Point(159, 108);
+            txtResultBV.Name = "txtResultBV";
+            txtResultBV.Size = new Size(31, 27);
+            txtResultBV.TabIndex = 2;
+            // 
+            // txtFirstBV
+            // 
+            txtFirstBV.Location = new Point(159, 38);
+            txtFirstBV.Name = "txtFirstBV";
+            txtFirstBV.Size = new Size(31, 27);
+            txtFirstBV.TabIndex = 2;
+            txtFirstBV.TextChanged += onValueChanged;
+            // 
+            // txtFirstGS
+            // 
+            txtFirstGS.Location = new Point(122, 38);
+            txtFirstGS.Name = "txtFirstGS";
+            txtFirstGS.Size = new Size(31, 27);
+            txtFirstGS.TabIndex = 1;
+            txtFirstGS.TextChanged += onValueChanged;
+            // 
+            // txtFirstRH
+            // 
+            txtFirstRH.Location = new Point(85, 38);
+            txtFirstRH.Name = "txtFirstRH";
+            txtFirstRH.Size = new Size(31, 27);
+            txtFirstRH.TabIndex = 0;
+            txtFirstRH.TextChanged += onValueChanged;
+            // 
+            // firstPanel
+            // 
+            firstPanel.Location = new Point(264, 38);
+            firstPanel.Name = "firstPanel";
+            firstPanel.Size = new Size(28, 28);
+            firstPanel.TabIndex = 16;
+            // 
+            // secondPanel
+            // 
+            secondPanel.Location = new Point(264, 72);
+            secondPanel.Name = "secondPanel";
+            secondPanel.Size = new Size(28, 28);
+            secondPanel.TabIndex = 17;
+            // 
+            // resultPanel
+            // 
+            resultPanel.Location = new Point(264, 106);
+            resultPanel.Name = "resultPanel";
+            resultPanel.Size = new Size(28, 28);
+            resultPanel.TabIndex = 18;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(422, 164);
+            Controls.Add(resultPanel);
+            Controls.Add(secondPanel);
+            Controls.Add(firstPanel);
+            Controls.Add(txtResultRH);
+            Controls.Add(txtResultGS);
+            Controls.Add(txtSecondRH);
+            Controls.Add(txtResultBV);
+            Controls.Add(txtSecondGS);
+            Controls.Add(txtFirstRH);
+            Controls.Add(txtSecondBV);
+            Controls.Add(txtFirstGS);
+            Controls.Add(txtFirstBV);
             Controls.Add(cmbResultType);
-            Controls.Add(resultBV);
-            Controls.Add(resultGS);
-            Controls.Add(resultRH);
             Controls.Add(cmbSecondType);
             Controls.Add(cmbFirstType);
-            Controls.Add(secondBV);
-            Controls.Add(secondGS);
-            Controls.Add(secondR);
-            Controls.Add(comboBox1);
-            Controls.Add(firstBV);
-            Controls.Add(firstGS);
-            Controls.Add(firstRH);
+            Controls.Add(cmbOperation);
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);
@@ -172,18 +209,21 @@
 
         #endregion
         private Button button1;
-        private TextBox firstRH;
-        private TextBox firstGS;
-        private TextBox firstBV;
-        private ComboBox comboBox1;
-        private TextBox secondBV;
-        private TextBox secondGS;
-        private TextBox secondR;
+        private ComboBox cmbOperation;
         private ComboBox cmbFirstType;
         private ComboBox cmbSecondType;
-        private TextBox resultBV;
-        private TextBox resultGS;
-        private TextBox resultRH;
         private ComboBox cmbResultType;
+        private TextBox txtSecondRH;
+        private TextBox txtSecondGS;
+        private TextBox txtSecondBV;
+        private TextBox txtResultRH;
+        private TextBox txtResultGS;
+        private TextBox txtResultBV;
+        private TextBox txtFirstBV;
+        private TextBox txtFirstGS;
+        private TextBox txtFirstRH;
+        private Panel firstPanel;
+        private Panel secondPanel;
+        private Panel resultPanel;
     }
 }

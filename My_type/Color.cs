@@ -1,12 +1,13 @@
-﻿using System.Windows.Forms;
+﻿using System.Configuration;
+using System.Windows.Forms;
 
 namespace MyType
 {
     public class RGB
     {
-        private int red;
-        private int green;
-        private int blue;
+        public int red;
+        public int green;
+        public int blue;
 
         public RGB(int red, int green, int blue)
         {
@@ -125,9 +126,9 @@ namespace MyType
 
     public class HSV
     {
-        private int hue;
-        private int saturation;
-        private int value;
+        public int hue;
+        public int saturation;
+        public int value;
 
         public HSV(int hue, int saturation, int value)
         {
