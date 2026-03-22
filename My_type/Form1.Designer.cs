@@ -61,7 +61,7 @@
             // 
             cmbFirstType.FormattingEnabled = true;
             cmbFirstType.Items.AddRange(new object[] { "HSV", "RGB" });
-            cmbFirstType.Location = new Point(202, 38);
+            cmbFirstType.Location = new Point(205, 40);
             cmbFirstType.Name = "cmbFirstType";
             cmbFirstType.Size = new Size(56, 28);
             cmbFirstType.TabIndex = 10;
@@ -72,7 +72,7 @@
             // 
             cmbSecondType.FormattingEnabled = true;
             cmbSecondType.Items.AddRange(new object[] { "HSV", "RGB" });
-            cmbSecondType.Location = new Point(202, 73);
+            cmbSecondType.Location = new Point(205, 75);
             cmbSecondType.Name = "cmbSecondType";
             cmbSecondType.Size = new Size(56, 28);
             cmbSecondType.TabIndex = 11;
@@ -83,7 +83,7 @@
             // 
             cmbResultType.FormattingEnabled = true;
             cmbResultType.Items.AddRange(new object[] { "HSV", "RGB" });
-            cmbResultType.Location = new Point(202, 107);
+            cmbResultType.Location = new Point(205, 109);
             cmbResultType.Name = "cmbResultType";
             cmbResultType.Size = new Size(56, 28);
             cmbResultType.TabIndex = 15;
@@ -94,7 +94,7 @@
             // 
             txtSecondRH.Location = new Point(85, 73);
             txtSecondRH.Name = "txtSecondRH";
-            txtSecondRH.Size = new Size(31, 27);
+            txtSecondRH.Size = new Size(35, 27);
             txtSecondRH.TabIndex = 0;
             txtSecondRH.TextChanged += onValueChanged;
             // 
@@ -102,7 +102,7 @@
             // 
             txtSecondGS.Location = new Point(122, 73);
             txtSecondGS.Name = "txtSecondGS";
-            txtSecondGS.Size = new Size(31, 27);
+            txtSecondGS.Size = new Size(35, 27);
             txtSecondGS.TabIndex = 1;
             txtSecondGS.TextChanged += onValueChanged;
             // 
@@ -110,7 +110,7 @@
             // 
             txtSecondBV.Location = new Point(159, 73);
             txtSecondBV.Name = "txtSecondBV";
-            txtSecondBV.Size = new Size(31, 27);
+            txtSecondBV.Size = new Size(35, 27);
             txtSecondBV.TabIndex = 2;
             txtSecondBV.TextChanged += onValueChanged;
             // 
@@ -118,28 +118,28 @@
             // 
             txtResultRH.Location = new Point(85, 108);
             txtResultRH.Name = "txtResultRH";
-            txtResultRH.Size = new Size(31, 27);
+            txtResultRH.Size = new Size(35, 27);
             txtResultRH.TabIndex = 0;
             // 
             // txtResultGS
             // 
             txtResultGS.Location = new Point(122, 108);
             txtResultGS.Name = "txtResultGS";
-            txtResultGS.Size = new Size(31, 27);
+            txtResultGS.Size = new Size(35, 27);
             txtResultGS.TabIndex = 1;
             // 
             // txtResultBV
             // 
             txtResultBV.Location = new Point(159, 108);
             txtResultBV.Name = "txtResultBV";
-            txtResultBV.Size = new Size(31, 27);
+            txtResultBV.Size = new Size(35, 27);
             txtResultBV.TabIndex = 2;
             // 
             // txtFirstBV
             // 
             txtFirstBV.Location = new Point(159, 38);
             txtFirstBV.Name = "txtFirstBV";
-            txtFirstBV.Size = new Size(31, 27);
+            txtFirstBV.Size = new Size(35, 27);
             txtFirstBV.TabIndex = 2;
             txtFirstBV.TextChanged += onValueChanged;
             // 
@@ -147,7 +147,7 @@
             // 
             txtFirstGS.Location = new Point(122, 38);
             txtFirstGS.Name = "txtFirstGS";
-            txtFirstGS.Size = new Size(31, 27);
+            txtFirstGS.Size = new Size(35, 27);
             txtFirstGS.TabIndex = 1;
             txtFirstGS.TextChanged += onValueChanged;
             // 
@@ -155,27 +155,27 @@
             // 
             txtFirstRH.Location = new Point(85, 38);
             txtFirstRH.Name = "txtFirstRH";
-            txtFirstRH.Size = new Size(31, 27);
+            txtFirstRH.Size = new Size(35, 27);
             txtFirstRH.TabIndex = 0;
             txtFirstRH.TextChanged += onValueChanged;
             // 
             // firstPanel
             // 
-            firstPanel.Location = new Point(264, 38);
+            firstPanel.Location = new Point(267, 40);
             firstPanel.Name = "firstPanel";
             firstPanel.Size = new Size(28, 28);
             firstPanel.TabIndex = 16;
             // 
             // secondPanel
             // 
-            secondPanel.Location = new Point(264, 72);
+            secondPanel.Location = new Point(267, 74);
             secondPanel.Name = "secondPanel";
             secondPanel.Size = new Size(28, 28);
             secondPanel.TabIndex = 17;
             // 
             // resultPanel
             // 
-            resultPanel.Location = new Point(264, 106);
+            resultPanel.Location = new Point(267, 108);
             resultPanel.Name = "resultPanel";
             resultPanel.Size = new Size(28, 28);
             resultPanel.TabIndex = 18;
@@ -184,7 +184,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(422, 164);
+            ClientSize = new Size(329, 164);
             Controls.Add(resultPanel);
             Controls.Add(secondPanel);
             Controls.Add(firstPanel);
@@ -202,7 +202,7 @@
             Controls.Add(cmbFirstType);
             Controls.Add(cmbOperation);
             Name = "Form1";
-            Text = "Form1";
+            Text = "ColorCalculator";
             ResumeLayout(false);
             PerformLayout();
         }

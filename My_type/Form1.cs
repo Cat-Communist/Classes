@@ -25,26 +25,64 @@ namespace My_type
             }
         }
 
+        private void PaintPanel(ComboBox cmbType, Panel panel, dynamic color)
+        {
+            switch (cmbType.Text)
+            {
+                case "HSV":
+                    var colorRGB = color.ToRGB();
+
+                    panel.BackColor = Color.FromArgb(colorRGB.red, colorRGB.green, colorRGB.blue);
+                    break;
+                case "RGB":
+                    panel.BackColor = Color.FromArgb(color.red, color.green, color.blue);
+                    break;
+                default:
+                    panel.BackColor = Color.Black;
+                    break;
+            }
+        }
+
         // TODO: доделать Calculate()
         private void Calculate()
         {
+            int firstRH, firstGS, firstBV;
+            dynamic firstColor;
             try
             {
-                var firstRH = int.Parse(txtFirstRH.Text);
-                var firstGS = int.Parse(txtFirstGS.Text);
-                var firstBV = int.Parse(txtFirstBV.Text);
+                firstRH = int.Parse(txtFirstRH.Text);
+                firstGS = int.Parse(txtFirstGS.Text);
+                firstBV = int.Parse(txtFirstBV.Text);
 
-                dynamic firstColor;
                 firstColor = AssignColor(cmbFirstType, firstRH, firstGS, firstBV);
+                PaintPanel(cmbFirstType, firstPanel, firstColor);
+            }
+            catch
+            {
+                firstRH = firstGS = firstBV = 0;
+                firstColor = AssignColor(cmbFirstType, firstRH, firstGS, firstBV);
+            }
 
-                var secondRH = int.Parse(txtSecondRH.Text);
-                var secondGS = int.Parse(txtSecondGS.Text);
-                var secondBV = int.Parse(txtSecondBV.Text);
+            int secondRH, secondGS, secondBV;
+            dynamic secondColor;
+            try
+            {
+                secondRH = int.Parse(txtSecondRH.Text);
+                secondGS = int.Parse(txtSecondGS.Text);
+                secondBV = int.Parse(txtSecondBV.Text);
 
-                dynamic secondColor;
-                secondColor = AssignColor(cmbSecondType, secondBV, secondGS, secondRH);
+                secondColor = AssignColor(cmbSecondType, secondRH, secondGS, secondBV);
+                PaintPanel(cmbSecondType, secondPanel, secondColor);
+            }
+            catch
+            {
+                secondRH = secondGS = secondBV = 0;
+                secondColor = AssignColor(cmbSecondType, secondRH, secondGS, secondBV);
+            }
 
-                dynamic resultColor;
+            dynamic resultColor;
+            try
+            {
                 switch (cmbOperation.Text)
                 {
                     case "+":
@@ -58,19 +96,17 @@ namespace My_type
                 switch (cmbResultType.Text)
                 {
                     case "HSV":
+                        if (resultColor is RGB) resultColor = resultColor.ToHSV();
+
                         txtResultRH.Text = resultColor.hue.ToString();
                         txtResultGS.Text = resultColor.saturation.ToString();
                         txtResultBV.Text = resultColor.value.ToString();
-
-                        var resultRGB = resultColor.ToRGB();
-                        resultPanel.BackColor = Color.FromArgb(resultRGB.red, resultRGB.green, resultRGB.blue);
                         break;
                     case "RGB":
+                        if (resultColor is HSV) resultColor = resultColor.ToRGB();
                         txtResultRH.Text = resultColor.red.ToString();
                         txtResultGS.Text = resultColor.green.ToString();
                         txtResultBV.Text = resultColor.blue.ToString();
-
-                        resultPanel.BackColor = Color.FromArgb(resultColor.red, resultColor.green, resultColor.blue);
                         break;
                     default:
                         txtResultRH.Text = "0";
@@ -78,8 +114,9 @@ namespace My_type
                         txtResultBV.Text = "0";
                         break;
                 }
+                PaintPanel(cmbResultType, resultPanel, resultColor);
             }
-            catch (Exception) { }
+            catch { }
         }
 
         private void onValueChanged(object sender, EventArgs e)
